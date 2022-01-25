@@ -1,6 +1,7 @@
 import socket
 import tkinter as tk
 import time
+import json
 
 
                 #########################  socket creation and connection  ##########################
@@ -29,6 +30,7 @@ while True:
         try:
             c_msg = client_socket.recv(1024).decode()
             if c_msg:
+                c_msg = json.loads(c_msg)
                 print('c msg :',c_msg)
         except:
             pass
