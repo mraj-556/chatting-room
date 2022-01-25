@@ -1,4 +1,5 @@
 import socket
+import json
 
 clientsocket = socket.socket()
 clientsocket.bind(('',50007))
@@ -19,10 +20,13 @@ while True:
         
     except:
         msg = input('Enter msg : ')
+        msg = [msg,'127.0.0.1',client_socket[1]]
+        msg = json.dumps(msg)
         clientsocket.shutdown(socket.SHUT_RDWR)
         clientsocket.close()
         clientsocket = socket.socket()
         clientsocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         clientsocket.connect(('127.0.0.1',60005))
+        client_socket = clientsocket.getsockname()
         clientsocket.settimeout(1)
         clientsocket.send(bytes(msg.encode('utf-8')))
