@@ -2,7 +2,7 @@ import socket
 import json
 
 clientsocket = socket.socket()
-clientsocket.bind(('',50007))
+clientsocket.bind(('',50006))
 clientsocket.connect(('127.0.0.1',60005))  # connects to server's ip address and it's port number
 print('client1 connected')
 
